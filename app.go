@@ -46,7 +46,10 @@ func NewChiRouter() *chi.Mux {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
-	r.Get("/bar", handlers.HandleBar)
+	cs := handlers.NewCounterHandler()
+	r.Get("/counter", cs.ServeCounterView)
+	r.Post("/counter/increment", cs.Increment)
+	r.Post("/counter/decrement", cs.Decrement)
 
 	return r
 }

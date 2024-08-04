@@ -1,0 +1,17 @@
+package components
+
+templ Button(classes string, hxUrl string, hxTarget string,method string,label string) {
+	<button
+ 		class="btn { classes }"
+ 		type="submit"
+ 		hx-target={ hxTarget }
+ 		hx-trigger="click"
+ 		hx-swap="outerhtml transition:false"
+ 		if method == "GET" {
+			hx-get={ hxUrl }
+		}
+ 		if method == "POST" {
+			hx-post={ hxUrl }
+		}
+	>{ label }</button>
+}

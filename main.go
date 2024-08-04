@@ -13,7 +13,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
 )
 
-//go:embed all:frontend/dist components
+//go:embed all:frontend/dist src/components src/views
 var assets embed.FS
 
 //go:embed build/appicon.png
