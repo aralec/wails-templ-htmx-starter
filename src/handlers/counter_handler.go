@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"net/http"
 	"wails-templ-hmtx-project/src/services"
 	"wails-templ-hmtx-project/src/views"
@@ -24,10 +25,12 @@ func (ch *CounterHandler) ServeCounterView(w http.ResponseWriter, r *http.Reques
 
 func (ch *CounterHandler) Increment(w http.ResponseWriter, r *http.Request) {
 	ch.service.Increment()
-	ch.ServeCounterView(w, r)
+	count := ch.service.GetCount()
+	json.NewEncoder(w).Encode(count)
 }
 
 func (ch *CounterHandler) Decrement(w http.ResponseWriter, r *http.Request) {
 	ch.service.Decrement()
-	ch.ServeCounterView(w, r)
+	count := ch.service.GetCount()
+	json.NewEncoder(w).Encode(count)
 }
