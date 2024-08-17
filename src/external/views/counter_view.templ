@@ -1,7 +1,10 @@
 package views
 
-import "strconv"
-import "wails-templ-hmtx-project/src/components"
+import (
+    "strconv"
+
+    "wails-templ-hmtx-project/src/external/components"
+)
 
 templ CounterView(state int) {
     @count(state)

@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
-	"wails-templ-hmtx-project/src/handlers"
+	"net/http"
+	"wails-templ-hmtx-project/src/cmd/render"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
 )
 
 // App struct
@@ -41,17 +41,21 @@ func (a *App) shutdown(ctx context.Context) {
 	// Perform your teardown here
 }
 
-func NewChiRouter() *chi.Mux {
-	r := chi.NewRouter()
-	r.Use(middleware.Logger)
-	r.Use(middleware.Recoverer)
+// Methods below are not bound to Wails lifecycle :
 
-	r.Route("/counter", func(r chi.Router) {
-		cs := handlers.NewCounterHandler()
-		r.Get("/", cs.ServeCounterView)
-		r.Post("/increment", cs.Increment)
-		r.Post("/decrement", cs.Decrement)
-	})
+// getRoutes returns the application routes from the src directory
+func (a *App) getRoutes() *chi.Mux {
+	return render.GetRenderingMux()
+}
 
-	return r
+// Middleware returns a NotFound middleware that enables the
+// wails application to pass on HTTP calls to the backend handlers
+// instead of serving static files
+// See https://wails.io/docs/reference/options#assetserver
+func (a *App) Middlewares() func(http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		r := a.getRoutes()
+		r.NotFound(next.ServeHTTP)
+		return r
+	}
 }

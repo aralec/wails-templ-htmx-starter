@@ -3,12 +3,13 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"wails-templ-hmtx-project/src/services"
-	"wails-templ-hmtx-project/src/views"
+	"wails-templ-hmtx-project/src/external/views"
+	"wails-templ-hmtx-project/src/internal/core/ports"
+	"wails-templ-hmtx-project/src/internal/core/services"
 )
 
 type CounterHandler struct {
-	service *services.CounterService
+	service ports.Counter
 }
 
 func NewCounterHandler() *CounterHandler {

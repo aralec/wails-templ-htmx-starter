@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 	"log"
-	"net/http"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/logger"
@@ -13,7 +12,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
 )
 
-//go:embed all:frontend/dist src/components src/views
+//go:embed all:frontend/dist src/external/components src/external/views
 var assets embed.FS
 
 //go:embed build/appicon.png
@@ -25,7 +24,6 @@ var appName = projectName + " - " + version
 func main() {
 	// Create an instance of the app structure and custom Middleware
 	app := NewApp()
-	r := NewChiRouter()
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -43,11 +41,8 @@ func main() {
 		HideWindowOnClose: false,
 		BackgroundColour:  &options.RGBA{R: 255, G: 255, B: 255, A: 255},
 		AssetServer: &assetserver.Options{
-			Assets: assets,
-			Middleware: func(next http.Handler) http.Handler {
-				r.NotFound(next.ServeHTTP)
-				return r
-			},
+			Assets:     assets,
+			Middleware: app.Middlewares(),
 		},
 		Menu:             nil,
 		Logger:           nil,
