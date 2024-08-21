@@ -12,7 +12,12 @@ templ CounterView(state int) {
 }
 
 templ count(state int) {
-    <div>State : <div id="count-value">{ strconv.Itoa(state) }</div></div>
+    <div>
+        State :
+        <div id="count-value">
+            { strconv.Itoa(state) }
+        </div>
+    </div>
 }
 
 templ actions() {
@@ -30,5 +35,5 @@ templ actions() {
         "#count-value",
         "POST",
         "-",
-    )  
+    )
 }

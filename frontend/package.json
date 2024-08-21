@@ -2,8 +2,8 @@
   "name": "wails-templ-hmtx-project",
   "version": "0.0.0",
   "devDependencies": {
-    "autoprefixer": "^10.4.15",
-    "vite": "^4.4.11"
+    "autoprefixer": "^10.4.20",
+    "vite": "^5.4.1"
   },
   "private": true,
   "scripts": {
