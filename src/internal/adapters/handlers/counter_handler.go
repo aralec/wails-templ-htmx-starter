@@ -3,9 +3,9 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"wails-templ-hmtx-project/src/external/views"
-	"wails-templ-hmtx-project/src/internal/core/ports"
-	"wails-templ-hmtx-project/src/internal/core/services"
+	"wails-templ-htmx-project/src/external/views"
+	"wails-templ-htmx-project/src/internal/core/ports"
+	"wails-templ-htmx-project/src/internal/core/services"
 )
 
 type CounterHandler struct {

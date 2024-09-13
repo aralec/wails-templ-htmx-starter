@@ -1,4 +1,4 @@
-module wails-templ-hmtx-project
+module wails-templ-htmx-project
 
 go 1.21
 

@@ -1,5 +1,5 @@
 {
-  "name": "wails-templ-hmtx-project",
+  "name": "wails-templ-htmx-project",
   "version": "0.0.0",
   "devDependencies": {
     "autoprefixer": "^10.4.20",

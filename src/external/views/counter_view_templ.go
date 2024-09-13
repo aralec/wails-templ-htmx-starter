@@ -11,7 +11,7 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"strconv"
 
-	"wails-templ-hmtx-project/src/external/components"
+	"wails-templ-htmx-project/src/external/components"
 )
 
 func CounterView(state int) templ.Component {

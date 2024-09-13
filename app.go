@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"net/http"
-	"wails-templ-hmtx-project/src/cmd/render"
+	"wails-templ-htmx-project/src/cmd/render"
 
 	"github.com/go-chi/chi/v5"
 )

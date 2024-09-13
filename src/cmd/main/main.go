@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"wails-templ-hmtx-project/src/cmd/render"
+	"wails-templ-htmx-project/src/cmd/render"
 )
 
 // main runs the core application (server-side code + templating)
